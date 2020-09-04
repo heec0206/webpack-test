@@ -1,0 +1,23 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bulid": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heec0206/webpack-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heec0206/webpack-test/issues"
+  },
+  "homepage": "https://github.com/heec0206/webpack-test#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
