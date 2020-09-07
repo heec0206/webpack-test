@@ -20,7 +20,7 @@ module.exports = {
           use : [{
             loader : 'file-loader',
             options : {
-              pbulicPath : '../dist'
+              publicPath : './dist'
             }
           }]
         }
