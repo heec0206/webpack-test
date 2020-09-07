@@ -1,4 +1,6 @@
 import {sum} from './math.js';
+import './jquery-1.8.3.min.js';
+import './jquery-ui-1.8.2.js';
 import './app.css';
 
 var el = document.querySelector("#app");
