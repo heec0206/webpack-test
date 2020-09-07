@@ -2,5 +2,5 @@ import {sum} from './math.js';
 import './app.css';
 
 var el = document.querySelector("#app");
-el.innerHTML = '<h1>1 + 2 = ${sum(1, 2)} </h1>';
-el.innerHTML = 'webpack test';
+el.append = '<h1>1 + 2 = ${sum(1, 2)} </h1>';
+el.append = '<h1>webpack test</h1>';
