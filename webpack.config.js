@@ -1,12 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode : 'development',
     entry : {
-      main : './src/app.js'
+      app : './src/js/user/app.js',
+      //classApp : './src/js/classroom/classApp.js'
     },
+    devServer: {
+      port : 8088,
+      overlay: true
+    },
+    devtool: 'inline-source-map',
     output : {
       path : path.resolve('./dist'),
       filename : '[name].js',
@@ -16,6 +23,15 @@ module.exports = {
         {
           test : /\.css$/,
           use : ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          use : [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader'
+          ]
         },
         {
           test : /\.png$/,
@@ -41,9 +57,12 @@ module.exports = {
       ]
     },
     plugins : [
+
       new HtmlWebpackPlugin({
         template : './src/index.html',
+        //filename : 'sub01.html',
       }),
       new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin({ filename : './apps.css'}),
     ]
 }
