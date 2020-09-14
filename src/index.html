@@ -1,8 +1,117 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+  <title>111234</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <!-- <link href="../../../css/template7/resp/wbUser.css?ver=1.6" rel="stylesheet"/> -->
+  <!--[if lt IE 9]>
+    <script src="../../../js/html5.js"></script>
+    <script src="../../../js/respond.min.js"></script>
+  <![endif]-->
+  <script src="../src/user/js/vue.js"></script>
+</head>
 <body>
-  <div id="app"></div>
-  522
+
+  <div>zzzzzzzzzzz</div>
+
+  <div id="app">
+    {{ nextYear('안녕하세요') }}
+
+    <!-- v-bind: -> : 생략 가능 -->
+    <p>
+      <input v-bind:type="text" v-bind:value="inputData"/><br/>
+      <a v-bind:href="useChannel('photo/index.nhn?mid=pho')">123</a><br/>
+
+      <br/></br/>
+      {{ year }}
+      <button v-on:click="plus">더하기</button>
+      <button v-on:click="minus">빼기</button>
+
+      <br/></br/>
+      <form v-on:submit.prevent="submit">
+        <!-- <input type="text" v-bind:value="text" v-on:keyup="updateText"/><br/> -->
+        <input type="text" v-model="text"><br/>
+        {{ text }}<br/>
+        <button type="submit">Submit</button>
+      </form>
+
+      <br/><br/>
+      {{ message }}<br/>
+      <button v-on:click="changeMessage">Click</button><br/>
+      {{ updated }}
+
+    </p>
+
+  </div>
+
+  <div>zzzzzzzzzzz</div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        person: {
+          name: 'name',
+          age: 30,
+          text : 'text'
+        },
+        message : '안녕 헬로우!',
+        updated : '아니오',
+        year : 2020,
+        inputData : 'hello',
+        text : 'text',
+        link : 'https://news.naver.com/main/'
+      },
+
+      methods: {
+        useChannel(channel){
+          return this.link + channel;
+        },
+
+        nextYear: function(greeting){
+          return greeting + this.person.name + "는 내년에 " + (this.person.age+1) + "살 입니다.";
+        },
+        otherMethod : function(){
+          this.nextYear();
+        },
+
+        plus(){
+          this.year++;
+        },
+
+        minus(){
+          this.year--;
+        },
+
+        submit(){
+          alert('submitted !');
+          console.log('gg');
+        },
+
+        /*
+        updateText(event){
+          this.text = event.target.value;
+        }
+        */
+        changeMessage(){
+          this.message = "heechnag";
+        }
+      },
+
+      computed : {
+        reverseMessage(){
+          return this.message.split('').reverse().join('');
+        }
+      },
+
+      watch : {
+        message(newVal, oldVal){
+          console.log(newVal, oldVal);
+          this.updated = '네';
+        }
+      }
+    });
+  </script>
 </body>
 </html>

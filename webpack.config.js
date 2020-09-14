@@ -6,8 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode : 'development',
     entry : {
-      app : './src/js/user/app.js',
-      //classApp : './src/js/classroom/classApp.js'
+      userApp : './src/user/app.js',
+      //classApp : './src/classroom/app.js'
     },
     devServer: {
       port : 8088,
@@ -58,11 +58,30 @@ module.exports = {
     },
     plugins : [
 
-      new HtmlWebpackPlugin({
-        template : './src/index.html',
-        //filename : 'sub01.html',
+      /*
+      new webpack.DefinePlugin({
+        'process.env' : config.dev.nev
       }),
+      */
+      new HtmlWebpackPlugin({
+        filename : 'index.html',
+        template : './src/index.html',
+      }),
+      new HtmlWebpackPlugin({
+        filename : 'sub01.html',
+      }),
+      /*
+      new HtmlWebpackPlugin({
+        template : './src/user/teamplte/main/main_user.html',
+        chunks : ['sub'],
+        filename : 'sub.html'
+      }),
+      */
       new CleanWebpackPlugin(),
-      new MiniCssExtractPlugin({ filename : './apps.css'}),
+      new MiniCssExtractPlugin({
+        filename : './apps.css'
+        //filename: "[name].[contenthash].css",
+        //chunkFilename: "[id].[contenthash].css"
+      })
     ]
 }
